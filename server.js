@@ -43,7 +43,7 @@ app.listen(httpPort, () => {
 function createTCPServer(port, weightIndex) {
 	const tcpServer = net.createServer((socket) => {
 		const interval = setInterval(() => {
-			socket.write(`${scaleWeights[weightIndex]} LB\n`);
+			socket.write(`${scaleWeights[weightIndex]} LB\r\n`);
 		}, 1000);
 
 		socket.on("close", () => {
