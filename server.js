@@ -49,6 +49,10 @@ function createTCPServer(port, weightIndex) {
 		socket.on("close", () => {
 			clearInterval(interval);
 		});
+
+		socket.on("error", (err) => {
+			console.log(err);
+		});
 	});
 
 	tcpServer.listen(port, () => {
