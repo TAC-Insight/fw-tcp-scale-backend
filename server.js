@@ -39,12 +39,12 @@ app.listen(httpPort, () => {
 	console.log(`Express server listening on port ${httpPort}`);
 });
 
-// Function to create a TCP server sending scale weight every 1 second
+// Function to create a TCP server sending scale weight every 1/2 second
 function createTCPServer(port, weightIndex) {
 	const tcpServer = net.createServer((socket) => {
 		const interval = setInterval(() => {
 			socket.write(`${scaleWeights[weightIndex]} LB\r\n`);
-		}, 1000);
+		}, 500);
 
 		socket.on("close", () => {
 			clearInterval(interval);
